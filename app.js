@@ -3,9 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const path = require("path");
-
+const methodOverride = require("method-override");
 const MONGO_URL = "mongodb://localhost:27017/wanderlust";
 
+//mongodb connection
 main()
   .then(() => {
     console.log("Connected to MongoDB");
@@ -21,6 +22,7 @@ async function main() {
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
   res.send("hello world");
@@ -32,12 +34,46 @@ app.get("/listings", async (req, res) => {
   res.render("listings/index.ejs", { allListings });
 });
 
+// new route
+app.get("/listings/new", (req, res) => {
+  res.render("listings/new.ejs");
+});
+
 // show route
 app.get("/listings/:id", async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
   res.render("listings/show.ejs", { listing });
 });
+
+//create route
+app.post("/listings", async (req, res) => {
+  // let { title, description, price, location } = req.body;
+  const newListing = new Listing(req.body.listings);
+  await newListing.save();
+  res.redirect("/listings");
+});
+
+//edit route
+app.get("/listings/:id/edit", async (req, res) => {
+  try {
+    let { id } = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/edit.ejs", { listing });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error loading the edit page.");
+  }
+});
+
+//update route
+app.put("/Listings/:id", async (req, res) => {
+  let { id } = req.params;
+  await Listing.findByIdAndUpdate(id, { ...req.body.listings });
+  res.redirect("/listings");
+});
+
+//testing database
 
 // app.get("/testListing", async (req, res) => {
 //   let sampleListing = new Listing({
@@ -52,6 +88,6 @@ app.get("/listings/:id", async (req, res) => {
 //   res.send("sample listing saved");
 // });
 
-app.listen(5000, () => {
-  console.log("Server is running on port 8080");
+app.listen(8000, () => {
+  console.log("Server is running on port 8000");
 });

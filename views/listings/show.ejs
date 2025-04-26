@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wanderlust</title>
+    <title>places</title>
   </head>
   <body>
     <h3>Listing Details :</h3>
     <ul>
       <li><%= listing.title %></li>
       <li><%= listing.description %></li>
-      <li><%= listing.price %></li>
+      <li><%= listing.price.toLocaleString("en-BD") %></li>
       <li><%= listing.location %></li>
       <li><%= listing.country %></li>
     </ul>
+
+    <br />
+
+    <a href="/listings/<%= listing._id %>/edit">edit this listing</a>
   </body>
 </html>

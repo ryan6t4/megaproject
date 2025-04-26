@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Listings</title>
+    <title>All places</title>
   </head>
   <body>
     <h1>all listing</h1>
+    <form method="get" action="/listings/new">
+      <button>Create New Listings</button>
+    </form>
     <ul>
       <% for (let listing of allListings) {%>
       <li><a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
