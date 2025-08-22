@@ -7,7 +7,7 @@
   </head>
   <body>
     <h3>edit places</h3>
-    <form method="post" action="/Listings/<%= listing._id %>?_method=put">
+    <form method="post" action="/listings/<%= listing._id %>?_method=PUT">
       <input name="listings[title]" value="<%= listing.title %> " type="text" />
       <br /><br />
 

@@ -67,9 +67,24 @@ app.get("/listings/:id/edit", async (req, res) => {
 });
 
 //update route
-app.put("/Listings/:id", async (req, res) => {
+app.put("/listings/:id", async (req, res) => {
+  try {
+    let { id } = req.params;
+    let updatedListing = await Listing.findByIdAndUpdate(id, {
+      ...req.body.listings,
+    });
+    console.log("updatedListing:", updatedListing);
+    res.redirect("/listings");
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("Error updating the listing.");
+  }
+});
+//delete route
+app.delete("/listings/:id", async (req, res) => {
   let { id } = req.params;
-  await Listing.findByIdAndUpdate(id, { ...req.body.listings });
+  let deletedListing = await Listing.findByIdAndDelete(id);
+  console.log("deletedListing:", deletedListing);
   res.redirect("/listings");
 });
 
