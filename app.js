@@ -42,6 +42,7 @@ app.get("/listings/new", (req, res) => {
 // show route
 app.get("/listings/:id", async (req, res) => {
   let { id } = req.params;
+  console.log("SHOW route hit for listing:", id);
   const listing = await Listing.findById(id);
   res.render("listings/show.ejs", { listing });
 });
@@ -102,6 +103,11 @@ app.delete("/listings/:id", async (req, res) => {
 //   console.log("sample listing saved");
 //   res.send("sample listing saved");
 // });
+
+app.use((req, res, next) => {
+  console.log(`No route matched for URL: ${req.originalUrl}`);
+  res.status(404).send("Route not found!");
+});
 
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
