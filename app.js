@@ -6,8 +6,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 
-const MONGO_URL = "mongodb://localhost:27017/wanderlust";
-
+const MONGO_URL =
+  "mongodb+srv://internetshrooms3:o8MxVGqJbH5y0Mq4@cluster0.sdcxemx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 //mongodb connection
 main()
   .then(() => {
@@ -113,6 +113,11 @@ app.use((req, res, next) => {
   res.status(404).send("Route not found!");
 });
 
-app.listen(8000, () => {
-  console.log("Server is running on port 8000");
+// app.listen(8000, () => {
+//   console.log("Server is running on port 8000");
+// });
+
+const PORT = process.env.PORT || 8000; // Render sets PORT automatically
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
 });
