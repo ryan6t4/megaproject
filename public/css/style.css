@@ -94,6 +94,44 @@ body {
 
 /* new ejs */
 .add-btn {
-  background-color: #fe424d !important;
+  background-color: black !important;
   border: none !important;
+}
+
+.edit-btn {
+  background-color: black !important;
+  border: none !important;
+}
+
+/* show page  */
+.show-img {
+  height: 30vh;
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+/* For medium screens and up */
+@media (min-width: 768px) {
+  .show-img {
+    height: 40vh;
+  }
+}
+
+/* For large screens and up */
+@media (min-width: 992px) {
+  .show-img {
+    height: 60vh;
+  }
+}
+
+.btns {
+  display: flex !important;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
 }
