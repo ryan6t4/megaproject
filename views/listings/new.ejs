@@ -1,37 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create New</title>
-  </head>
-  <body>
+<%- layout('layouts/boilerplate') -%>
+<div class="row">
+  <div class="col-8 offset-2">
+    <br>
     <h3>Create a New listings</h3>
     <form method="post" action="/Listings">
-      <input name="listings[title]" placeholder="enter title" type="text" />
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          name="listings[title]"
+          placeholder="Add a catchy  title"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          name="listings[description]"
+          placeholder="enter description"
+          class="form-control"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image </label>
+        <input
+          name="listings[image]"
+          placeholder="enter image Url/Link"
+          type="text"
+          class="form-control"
+        />
+      </div>
+    <div class="row">
+      <div class="mb-3 col-md-4">
+        <label for="price" class="form-label">Price</label>
+        <input
+          name="listings[price]"
+          placeholder="enter price"
+          type="number"
+          class="form-control"
+        />
+      </div>
+      </form>
+    
+
+      <div class="mb-3 col-md-8">
+        <label for="country" class="form-label">Country</label>
+        <input
+          name="listings[country]"
+          placeholder="enter country"
+          type="text"
+          class="form-control"
+        />
+      </div>
+
+    </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          name="listings[location]"
+          placeholder="enter location"
+          type="text"
+          class="form-control"
+        />
+      </div>
       <br /><br />
-      <textarea
-        name="listings[description]"
-        placeholder="enter description"
-      ></textarea>
-      <br /><br />
-      <input
-        name="listings[image]"
-        placeholder="enter image Url/Link"
-        type="text"
-      />
-      <br /><br />
-      <input name="listings[price]" placeholder="enter price" type="number" />
-      <br /><br />
-      <input name="listings[country]" placeholder="enter country" type="text" />
-      <br /><br />
-      <input
-        name="listings[location]"
-        placeholder="enter location"
-        type="text"
-      />
-      <br /><br />
-      <button>Add</button>
+      <button class="btn btn-dark add-btn">Add</button>
+      <br><br> 
     </form>
-  </body>
-</html>
+  </div>
+</div>
