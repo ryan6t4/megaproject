@@ -1,4 +1,4 @@
-<%- layout('layouts/boilerplate') -%>
+<!-- <%- layout('layouts/boilerplate') -%>
 <div class="row mt-3">
   <div class="col-8 offset-2">
     
@@ -71,4 +71,68 @@
       
     </form>
   </div>
-</div>
+</div> -->
+
+<form method="post" action="/Listings">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      name="listings[title]"
+      type="text"
+      class="form-control"
+      placeholder="Add a catchy title"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea
+      name="listings[description]"
+      class="form-control"
+      placeholder="Enter description"
+    ></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="image" class="form-label">Image</label>
+    <input
+      name="listings[image]"
+      type="text"
+      class="form-control"
+      placeholder="Enter image URL/Link"
+    />
+  </div>
+
+  <div class="row">
+    <div class="mb-3 col-md-4">
+      <label for="price" class="form-label">Price</label>
+      <input
+        name="listings[price]"
+        type="number"
+        class="form-control"
+        placeholder="Enter price"
+      />
+    </div>
+    <div class="mb-3 col-md-8">
+      <label for="country" class="form-label">Country</label>
+      <input
+        name="listings[country]"
+        type="text"
+        class="form-control"
+        placeholder="Enter country"
+      />
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="location" class="form-label">Location</label>
+    <input
+      name="listings[location]"
+      type="text"
+      class="form-control"
+      placeholder="Enter location"
+    />
+  </div>
+
+  <button class="btn btn-dark add-btn mt-3 mb-4">Add</button>
+</form>
