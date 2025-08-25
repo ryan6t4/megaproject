@@ -5,6 +5,7 @@ const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const { env } = require("./env.js");
 
 const MONGO_URL = env.DATABASE_URL;
 //mongodb connection
